@@ -18,8 +18,6 @@ const laterBtn = document.getElementById("laterBtn");
 
 const goBtn = document.getElementById("goBtn");
 
-const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
 
 const modal = document.getElementById("modal");
 
@@ -30,7 +28,6 @@ const modalButton = document.getElementById("modalButton");
 
 let noCounter = 0;
 
-let musicStarted = false;
 
 // ==========================================
 
@@ -153,42 +150,6 @@ yesBtn.onclick = () => {
 };
 
 // ==========================================
-// Երաժշտություն
-// ==========================================
-
-musicBtn.onclick = async () => {
-
-    if (musicStarted)
-        return;
-
-    try {
-
-        await music.play();
-
-        musicStarted = true;
-
-        musicBtn.innerHTML =
-            "🎵 Երաժշտությունը միացված է";
-
-    }
-
-    catch {
-
-        openModal(
-
-            "🎵",
-
-            "Տեղեկություն",
-
-            "Սեղմիր ևս մեկ անգամ 😊"
-
-        );
-
-    }
-
-};
-
-// ==========================================
 // Պատահական թիվ
 // ==========================================
 
@@ -307,7 +268,7 @@ function funnyAnswer() {
 
             "😆",
 
-            "Վա՜յ",
+            "Վայ",
 
             "Դու իսկապես շատ համառ ես։ 😂"
 

@@ -1368,7 +1368,7 @@ function showGoodbye() {
 // Telegram
 // ==========================================
 
-async function sendTelegram(){
+async function sendTelegram() {
 
     const selected = [
         ...document.querySelectorAll(".card input:checked")
@@ -1378,36 +1378,35 @@ async function sendTelegram(){
 
     const message = `❤️ Նոր ժամադրության պատասխան
 
-👩 Նա համաձայնվեց գալ ժամադրության։
+    👩 Նա համաձայնվեց գալ ժամադրության։
 
-📋 Ընտրել է՝
+    📋 Ընտրել է՝
 
-${answers}
+    ${answers}
 
-🕒 ${new Date().toLocaleString()}`;
+    🕒 ${new Date().toLocaleString()}`;
 
-    try{
+    try {
 
         await fetch(
             "https://api.telegram.org/bot8964693808:AAED7dyotLb2SHRQoGg-2dvL8iu3zu1Kw7g/sendMessage",
             {
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({
-                    chat_id:1477508268,
-                    text:message
+                body: JSON.stringify({
+                    chat_id: 1477508268,
+                    text: message
                 })
             }
         );
 
         console.log("Telegram OK");
 
-    }catch(e){
+    } catch (e) {
 
         console.error(e);
 
     }
-
 }

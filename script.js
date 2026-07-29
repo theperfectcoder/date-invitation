@@ -863,7 +863,7 @@ function sparkleExplosion() {
 // Գնացինք
 // ==========================================
 
-goBtn.onclick = () => {
+goBtn.onclick = asycn () => {
 
     const checked =
         document.querySelectorAll(
@@ -885,6 +885,8 @@ goBtn.onclick = () => {
         return;
 
     }
+
+    await sendTelegram();
 
     burstHearts();
 
@@ -1359,5 +1361,53 @@ function showGoodbye() {
         fill: "forwards"
 
     });
+
+}
+
+// ==========================================
+// Telegram
+// ==========================================
+
+async function sendTelegram(){
+
+    const selected = [
+        ...document.querySelectorAll(".card input:checked")
+    ];
+
+    const answers = selected.map(x => "• " + x.value).join("\n");
+
+    const message = `❤️ Նոր ժամադրության պատասխան
+
+👩 Նա համաձայնվեց գալ ժամադրության։
+
+📋 Ընտրել է՝
+
+${answers}
+
+🕒 ${new Date().toLocaleString()}`;
+
+    try{
+
+        await fetch(
+            "https://api.telegram.org/bot8964693808:AAED7dyotLb2SHRQoGg-2dvL8iu3zu1Kw7g/sendMessage",
+            {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    chat_id:1477508268,
+                    text:message
+                })
+            }
+        );
+
+        console.log("Telegram OK");
+
+    }catch(e){
+
+        console.error(e);
+
+    }
 
 }

@@ -202,27 +202,42 @@ function random(min, max) {
 // Փախչող կոճակ
 // ==========================================
 
-function moveButton(button) {
+// function moveButton(button) {
 
-    const x = random(
-        20,
-        window.innerWidth - button.offsetWidth - 20
-    );
+//     const padding = 20;
 
-    const y = random(
-        20,
-        window.innerHeight - button.offsetHeight - 20
-    );
+//     const width = button.offsetWidth;
 
-    button.style.position = "fixed";
+//     const height = button.offsetHeight;
 
-    button.style.left = x + "px";
+//     const maxX =
+//         window.innerWidth - width - padding;
 
-    button.style.top = y + "px";
+//     const maxY =
+//         window.innerHeight - height - padding;
 
-    button.style.zIndex = 10000;
+//     const x = Math.max(
+//         padding,
+//         Math.random() * maxX
+//     );
 
-}
+//     const y = Math.max(
+//         padding + 40,
+//         Math.random() * maxY
+//     );
+
+//     button.style.position = "fixed";
+
+//     button.style.left = x + "px";
+
+//     button.style.top = y + "px";
+
+//     button.style.transition =
+//         "all .35s cubic-bezier(.2,.8,.2,1)";
+
+//     button.style.zIndex = "10000";
+
+// }
 
 // ==========================================
 
@@ -334,49 +349,203 @@ function funnyAnswer() {
 
 // ==========================================
 
-function escape(button) {
+// function escape(button) {
 
-    button.addEventListener(
+//     button.addEventListener(
 
-        "mouseenter",
+//         "mouseenter",
 
-        () => {
+//         () => {
 
-            moveButton(button);
+//             moveButton(button);
 
-            funnyAnswer();
+//             funnyAnswer();
 
-        }
+//         }
+
+//     );
+
+//     button.addEventListener(
+
+//         "touchstart",
+
+//         e => {
+
+//             e.preventDefault();
+
+//             moveButton(button);
+
+//             funnyAnswer();
+
+//         },
+
+//         {
+
+//             passive: false
+
+//         }
+
+//     );
+
+// }
+
+// escape(noBtn);
+
+// escape(laterBtn);
+
+// ==========================================
+// Убегающие кнопки (iPhone friendly)
+// ==========================================
+
+const safeButton = yesBtn;
+
+function runAway(button) {
+
+    const safe = safeButton.getBoundingClientRect();
+
+    const w = button.offsetWidth;
+    const h = button.offsetHeight;
+
+    const padding = 20;
+
+    let x;
+    let y;
+
+    do {
+
+        x = Math.random() *
+            (window.innerWidth - w - padding * 2)
+            + padding;
+
+        y = Math.random() *
+            (window.innerHeight - h - padding * 2)
+            + padding;
+
+    }
+
+    while (
+
+        x < safe.right + 20 &&
+        x + w > safe.left - 20 &&
+        y < safe.bottom + 20 &&
+        y + h > safe.top - 20
 
     );
 
-    button.addEventListener(
+    button.style.position = "fixed";
 
-        "touchstart",
+    button.style.left = x + "px";
 
-        e => {
+    button.style.top = y + "px";
 
-            e.preventDefault();
+    button.style.transition =
+        "all .35s cubic-bezier(.18,.89,.32,1.28)";
 
-            moveButton(button);
-
-            funnyAnswer();
-
-        },
-
-        {
-
-            passive: false
-
-        }
-
-    );
+    button.style.zIndex = "9999";
 
 }
 
-escape(noBtn);
+// ==========================================
 
-escape(laterBtn);
+function attachRun(button) {
+
+    button.addEventListener("mouseenter", () => {
+
+        runAway(button);
+
+        funnyAnswer();
+
+    });
+
+    button.addEventListener("touchstart", (e) => {
+
+        e.preventDefault();
+
+        runAway(button);
+
+        funnyAnswer();
+
+    }, {
+
+        passive: false
+
+    });
+
+}
+
+// ==========================================
+
+attachRun(noBtn);
+attachRun(laterBtn);
+
+// ==========================================
+// Если палец приближается
+// ==========================================
+
+document.addEventListener("touchmove", (e) => {
+
+    const touch = e.touches[0];
+
+    [noBtn, laterBtn].forEach(button => {
+
+        const rect = button.getBoundingClientRect();
+
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+
+        const dist = Math.hypot(
+
+            touch.clientX - cx,
+
+            touch.clientY - cy
+
+        );
+
+        if (dist < 90) {
+
+            runAway(button);
+
+        }
+
+    });
+
+}, { passive: true });
+
+// ==========================================
+// Если экран повернули
+// ==========================================
+
+window.addEventListener("resize", () => {
+
+    noBtn.removeAttribute("style");
+
+    laterBtn.removeAttribute("style");
+
+});
+
+document.addEventListener("touchmove", (e) => {
+
+    [noBtn, laterBtn].forEach(button => {
+
+        const rect = button.getBoundingClientRect();
+
+        const touch = e.touches[0];
+
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const distance = Math.hypot(
+            touch.clientX - centerX,
+            touch.clientY - centerY
+        );
+
+        if (distance < 80) {
+            moveButton(button);
+        }
+
+    });
+
+}, { passive: true });
 
 // ==========================================
 // script.js

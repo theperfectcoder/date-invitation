@@ -19,11 +19,13 @@
 }
 
 html,
-body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: 'Nunito', sans-serif;
+body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    font-family:'Nunito',sans-serif;
+    -webkit-overflow-scrolling:touch;
 }
 
 body {
@@ -41,38 +43,30 @@ body {
 
 }
 
-.screen {
+.screen{
 
-    position: fixed;
+    min-height:100vh;
 
-    inset: 0;
+    width:100%;
 
-    display: flex;
+    display:none;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:flex-start;
 
     padding:
-        max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+        max(20px,env(safe-area-inset-top))
+        20px
+        max(40px,env(safe-area-inset-bottom));
 
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition: .6s;
-
-    transform: scale(.96);
+    overflow-y:auto;
 
 }
 
-.screen.active {
+.screen.active{
 
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform: scale(1);
+    display:flex;
 
 }
 

@@ -103,8 +103,6 @@ function startTyping() {
     const element =
         document.getElementById("question");
 
-    element.innerHTML = "💭 Մի պահ...";
-
     setTimeout(() => {
 
         element.innerHTML = "";

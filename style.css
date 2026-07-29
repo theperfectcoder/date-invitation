@@ -196,14 +196,6 @@ button:active {
 
 }
 
-.musicButton {
-
-    margin-top: 20px;
-
-    background: white;
-
-}
-
 #noBtn,
 #laterBtn {
 
@@ -653,7 +645,6 @@ button {
 
     }
 
-    .musicButton,
     #noBtn,
     #laterBtn {
 

@@ -1,0 +1,689 @@
+:root {
+    --primary: #ff4f8b;
+    --primary-light: #ff7ca8;
+    --secondary: #ffcadf;
+    --bg1: #ffe6f0;
+    --bg2: #ffd4ea;
+    --bg3: #fff7fb;
+    --glass: rgba(255, 255, 255, .72);
+    --text: #444;
+    --radius: 28px;
+    --shadow: 0 20px 45px rgba(0, 0, 0, .15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+
+    background:
+        radial-gradient(circle at top left, #fff 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #ffd0ea 0%, transparent 30%),
+        linear-gradient(135deg, #ffb7d4, #ffd6ea, #fff4fa);
+
+    color: var(--text);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding:
+        max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .6s;
+
+    transform: scale(.96);
+
+}
+
+.screen.active {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform: scale(1);
+
+}
+
+.glass {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    background: var(--glass);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border-radius: var(--radius);
+
+    padding: 34px 26px;
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid rgba(255, 255, 255, .7);
+
+    text-align: center;
+
+}
+
+.big {
+
+    font-size: 72px;
+
+    margin-bottom: 15px;
+
+    animation: bounce 3s infinite;
+
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+}
+
+h1 {
+
+    color: var(--primary);
+
+    font-size: 34px;
+
+    line-height: 1.2;
+
+    margin-bottom: 18px;
+
+}
+
+h2 {
+
+    color: var(--primary);
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+
+}
+
+p {
+
+    line-height: 1.7;
+
+    font-size: 18px;
+
+    margin-bottom: 28px;
+
+}
+
+.buttons {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+}
+
+button {
+
+    border: none;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+button:active {
+
+    transform: scale(.95);
+
+}
+
+.pink {
+
+    background: linear-gradient(135deg,
+            var(--primary),
+            var(--primary-light));
+
+    color: white;
+
+    box-shadow: 0 12px 25px rgba(255, 60, 120, .35);
+
+}
+
+.musicButton {
+
+    margin-top: 20px;
+
+    background: white;
+
+}
+
+#noBtn,
+#laterBtn {
+
+    background: white;
+
+}
+
+.cards {
+
+    display: grid;
+
+    gap: 14px;
+
+    margin-top: 20px;
+
+}
+
+.card {
+
+    display: block;
+
+}
+
+.card input {
+
+    display: none;
+
+}
+
+.card span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    transition: .25s;
+
+    border: 2px solid transparent;
+
+    font-size: 18px;
+
+}
+
+.card input:checked+span {
+
+    border-color: var(--primary);
+
+    background: #fff0f6;
+
+    transform: scale(1.02);
+
+}
+
+/* ========================= */
+/* Кнопка "Գնացինք" */
+/* ========================= */
+
+.bigButton {
+    width: 100%;
+    margin-top: 24px;
+}
+
+/* ========================= */
+/* Модальное окно */
+/* ========================= */
+
+#modal {
+
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, .45);
+
+    z-index: 9999;
+
+    transition: .35s;
+
+}
+
+#modal.hidden {
+
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+.modalWindow {
+
+    width: 90%;
+    max-width: 360px;
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    animation: popup .35s ease;
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .2);
+
+}
+
+.modalEmoji {
+
+    font-size: 65px;
+
+    margin-bottom: 18px;
+
+}
+
+#modalTitle {
+
+    color: var(--primary);
+
+    margin-bottom: 15px;
+
+    font-size: 26px;
+
+}
+
+#modalButton {
+
+    margin-top: 25px;
+
+    width: 100%;
+
+    background: linear-gradient(135deg,
+            var(--primary),
+            var(--primary-light));
+
+    color: white;
+
+}
+
+/* ========================= */
+
+@keyframes popup {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.75);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+/* ========================= */
+/* Сердечки, лепестки */
+/* ========================= */
+
+#hearts,
+#petals,
+#sparkles {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+.float {
+
+    position: absolute;
+
+    animation: float linear forwards;
+
+}
+
+@keyframes float {
+
+    0% {
+
+        transform:
+            translateY(110vh) rotate(0deg);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-150px) rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+/* ========================= */
+
+#confetti {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+}
+
+/* ========================= */
+/* Финальный экран */
+/* ========================= */
+
+.finalGlass {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+#car {
+
+    font-size: 72px;
+
+    margin: 25px 0;
+
+    transform: translateX(-180vw);
+
+}
+
+#bouquet {
+
+    opacity: 0;
+
+    font-size: 72px;
+
+    margin-top: 15px;
+
+}
+
+.heart {
+
+    font-size: 90px;
+
+    animation: heartbeat 1.4s infinite;
+
+}
+
+/* ========================= */
+
+@keyframes heartbeat {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    20% {
+
+        transform: scale(1.12);
+
+    }
+
+    40% {
+
+        transform: scale(1);
+
+    }
+
+    60% {
+
+        transform: scale(1.16);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+/* ========================= */
+/* Плавное появление */
+/* ========================= */
+
+.fadeIn {
+
+    animation: fadeIn .7s ease;
+
+}
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* ========================= */
+/* Красивая пульсация */
+/* ========================= */
+
+.pulse {
+
+    animation: pulse 2s infinite;
+
+}
+
+@keyframes pulse {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.05);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+/* ========================= */
+/* Hover */
+/* ========================= */
+
+button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+.card:hover span {
+
+    transform: translateY(-2px);
+
+}
+
+/* ========================= */
+/* Safari */
+/* ========================= */
+
+button {
+
+    -webkit-appearance: none;
+
+    appearance: none;
+
+}
+
+/* ========================= */
+/* Dark mode */
+/* ========================= */
+
+@media (prefers-color-scheme:dark) {
+
+    body {
+
+        background:
+            linear-gradient(135deg,
+                #341828,
+                #23121c,
+                #180d15);
+
+    }
+
+    .glass {
+
+        background: rgba(35, 35, 35, .72);
+
+        color: white;
+
+    }
+
+    p {
+
+        color: #f0f0f0;
+
+    }
+
+    .card span {
+
+        background: #444;
+
+        color: white;
+
+    }
+
+    .musicButton,
+    #noBtn,
+    #laterBtn {
+
+        background: #444;
+
+        color: white;
+
+    }
+
+    .modalWindow {
+
+        background: #333;
+
+        color: white;
+
+    }
+
+}
+
+/* ========================= */
+/* iPhone */
+/* ========================= */
+
+@supports(padding:max(0px)) {
+
+    body {
+
+        padding-top: env(safe-area-inset-top);
+
+        padding-bottom: env(safe-area-inset-bottom);
+
+    }
+
+}

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+    <title>❤️ Ժամադրության հրավեր ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Музыка -->
+
+    <audio id="music" loop>
+
+        <source src="music.mp3" type="audio/mpeg">
+
+    </audio>
+
+    <!-- Сердечки -->
+
+    <div id="hearts"></div>
+
+    <!-- Лепестки -->
+
+    <div id="petals"></div>
+
+    <!-- Блестки -->
+
+    <div id="sparkles"></div>
+
+    <!-- Конфетти -->
+
+    <canvas id="confetti"></canvas>
+    <!-- ========================= -->
+    <!-- Intro -->
+    <!-- ========================= -->
+
+    <section id="intro" class="screen active">
+
+        <div class="glass">
+
+            <div class="emoji big">
+                💌
+            </div>
+
+            <h1>
+
+                Փոքրիկ հարց ունեմ քեզ...
+
+            </h1>
+
+            <p>
+
+                Դա ընդամենը մի քանի վայրկյան կտևի։ 😊
+
+            </p>
+
+            <button id="startBtn" class="pink">
+
+                👀 Լսում եմ
+
+            </button>
+
+        </div>
+
+    </section>ы
+
+    <!-- ========================= -->
+
+    <!-- Первый экран -->
+
+    <!-- ========================= -->
+
+    <section id="screen1" class="screen">
+
+        <div class="glass">
+
+            <div class="emoji big">
+
+                🥹❤️
+
+            </div>
+
+            <h1>
+
+                Կուզե՞ս ինձ հետ<br>
+                ժամադրության գալ։
+
+            </h1>
+
+            <p>
+
+                Խոստանում եմ հաճելի երեկո,
+                շատ ժպիտներ,
+                լավ տրամադրություն
+                և գեղեցիկ հիշողություններ։ 😊
+
+            </p>
+
+            <div class="buttons">
+
+                <button id="yesBtn" class="pink">
+
+                    💖 Այո
+
+                </button>
+
+                <button id="noBtn">
+
+                    🙈 Ոչ
+
+                </button>
+
+                <button id="laterBtn">
+
+                    😅 Այսօր չեմ կարող
+
+                </button>
+
+            </div>
+
+            <button id="musicBtn" class="musicButton">
+
+                🎵 Միացնել երաժշտությունը
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+
+    <!-- Второй экран -->
+
+    <!-- ========================= -->
+
+    <section id="screen2" class="screen">
+
+        <div class="glass">
+
+            <div class="emoji big">
+
+                🥳💕
+
+            </div>
+
+            <h2>
+
+                Շատ ուրախ եմ,
+                որ ընդունեցիր հրավերս։ ❤️
+
+            </h2>
+
+            <p>
+
+                Հիմա ընտրիր,
+                թե ինչ անենք միասին։ 😊
+
+            </p>
+
+            <div class="cards">
+
+                <label class="card">
+
+                    <input type="checkbox" value="Քայլել">
+
+                    <span>
+
+                        🚶
+
+                        <strong>
+
+                            Քայլել
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Ռեստորան">
+
+                    <span>
+
+                        🍝
+
+                        <strong>
+
+                            Գնալ ռեստորան
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Սուրճ">
+
+                    <span>
+
+                        ☕
+
+                        <strong>
+
+                            Սուրճ կամ թեյ
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Փիլիսոփայել">
+
+                    <span>
+
+                        🌙
+
+                        <strong>
+
+                            Նստել նստարանին
+                            ու զրուցել
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Կինո">
+
+                    <span>
+
+                        🎬
+
+                        <strong>
+
+                            Գնալ կինո
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Պիցցա">
+
+                    <span>
+
+                        🍕
+
+                        <strong>
+
+                            Պիցցա ուտել
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Պաղպաղակ">
+
+                    <span>
+
+                        🍦
+
+                        <strong>
+
+                            Պաղպաղակ ուտել
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Լուսանկար">
+
+                    <span>
+
+                        📸
+
+                        <strong>
+
+                            Լուսանկարներ անել
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+                <label class="card">
+
+                    <input type="checkbox" value="Աստղեր">
+
+                    <span>
+
+                        🌌
+
+                        <strong>
+
+                            Աստղեր դիտել
+
+                        </strong>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+            <button id="goBtn" class="pink bigButton">
+
+                🚗 Գնացինք
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+
+    <!-- Финальный экран -->
+
+    <!-- ========================= -->
+
+    <section id="screen3" class="screen">
+
+        <div class="glass finalGlass">
+
+            <div class="emoji heart">
+
+                ❤️
+
+            </div>
+
+            <div id="car">
+
+                🚗
+
+            </div>
+
+            <div id="bouquet">
+
+                💐
+
+            </div>
+
+            <h2>
+
+                Շնորհակալություն ❤️
+
+            </h2>
+
+            <p>
+
+                Շնորհակալ եմ,
+                որ ընդունեցիր հրավերս։
+
+                <br><br>
+
+                Շատ ուրախ եմ,
+                որ շուտով կհանդիպենք։ 😊
+
+                <br><br>
+
+                Հուսով եմ,
+                մեզ հաճելի
+                ու հիշարժան օր է սպասվում։ ✨
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+
+    <!-- Модалка -->
+
+    <!-- ========================= -->
+
+    <div id="modal" class="hidden">
+
+        <div class="modalWindow">
+
+            <div id="modalEmoji" class="modalEmoji">
+
+                😂
+
+            </div>
+
+            <h3 id="modalTitle">
+
+            </h3>
+
+            <p id="modalText">
+
+            </p>
+
+            <button id="modalButton">
+
+                Լավ 😊
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

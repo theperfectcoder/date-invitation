@@ -863,7 +863,7 @@ function sparkleExplosion() {
 // Գնացինք
 // ==========================================
 
-goBtn.onclick = asycn () => {
+goBtn.onclick = async () => {
 
     const checked =
         document.querySelectorAll(
